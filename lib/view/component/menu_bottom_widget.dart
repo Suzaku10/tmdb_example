@@ -21,22 +21,16 @@ class _MenuBottomWidgetState extends State<MenuBottomWidget> {
     super.initState();
     _list = [
       ItemMenu(
-        id: MenuBottom.HOME,
+        id: MenuBottom.MOVIES,
         isActive: true,
         image: 'ic_menu_home',
         imageActive: 'ic_menu_home_active',
       ),
       ItemMenu(
-        id: MenuBottom.HISTORY,
+        id: MenuBottom.TV,
         isActive: false,
         image: 'ic_menu_inbox',
         imageActive: 'ic_menu_inbox_active',
-      ),
-      ItemMenu(
-        id: MenuBottom.ACCOUNT,
-        isActive: false,
-        image: '',
-        imageActive: '',
       ),
     ];
   }

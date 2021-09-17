@@ -1,4 +1,4 @@
 String getSourceByNameImage(String nameImage,
-    {String path = 'assets/images/', String ext = 'png'}) {
+    {String path = 'assets/images/png/', String ext = 'png'}) {
   return '$path$nameImage.$ext';
 }

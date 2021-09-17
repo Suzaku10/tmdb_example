@@ -11,16 +11,15 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  MenuBottom _currentTab = MenuBottom.HOME;
+  MenuBottom _currentTab = MenuBottom.MOVIES;
   Map<MenuBottom, Widget> _navigatorPage = {};
 
   @override
   void initState() {
     super.initState();
     _navigatorPage = _navigatorPage = {
-      MenuBottom.HOME: MoviesPage(),
-      MenuBottom.HISTORY: Container(),
-      MenuBottom.ACCOUNT: Container(),
+      MenuBottom.MOVIES: MoviesPage(),
+      MenuBottom.TV: Container(),
     };
   }
 
@@ -33,9 +32,8 @@ class _MainPageState extends State<MainPage> {
           Expanded(
             child: Container(
               child: Stack(children: <Widget>[
-                _buildOffstageNavigator(MenuBottom.HOME),
-                _buildOffstageNavigator(MenuBottom.HISTORY),
-                _buildOffstageNavigator(MenuBottom.ACCOUNT),
+                _buildOffstageNavigator(MenuBottom.MOVIES),
+                _buildOffstageNavigator(MenuBottom.TV),
               ]),
             ),
           ),

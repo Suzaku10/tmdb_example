@@ -10,29 +10,18 @@ class ItemMenuWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.topCenter,
-      height: 80,
+      height: kBottomNavigationBarHeight,
       padding: const EdgeInsets.only(top: 13),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          (itemMenu.id != MenuBottom.ACCOUNT)
-              ? Container(
-                  height: 24,
-                  width: 24,
-                  child: Image(
-                    image: AssetImage(
-                      itemMenu.getSource(),
-                    ),
-                  ),
-                )
-              : Container(
-                  height: 24,
-                  width: 24,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(60),
-                      color: Colors.black),
-                ),
+          Container(
+            height: 24,
+            width: 24,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(60), color: Colors.black),
+          ),
           Container(
             margin: EdgeInsets.only(top: 4),
             child: Text(
@@ -50,12 +39,10 @@ class ItemMenuWidget extends StatelessWidget {
 
   String getTitleByLocalization(MenuBottom id) {
     switch (id) {
-      case MenuBottom.HOME:
-        return "Home";
-      case MenuBottom.HISTORY:
-        return "Inbox";
-      case MenuBottom.ACCOUNT:
-        return "Akun";
+      case MenuBottom.MOVIES:
+        return "Movies";
+      case MenuBottom.TV:
+        return "Tv";
       default:
         return '';
     }

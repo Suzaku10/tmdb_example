@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tmdb_example/view/movies/component/movies_top_rated_widget.dart';
 
 class MoviesPage extends StatefulWidget {
   const MoviesPage({Key? key}) : super(key: key);
@@ -15,7 +16,9 @@ class _MoviesPageState extends State<MoviesPage> {
         title: Text("Movies"),
         centerTitle: true,
       ),
-      body: Container(color: Colors.redAccent),
+      body: Container(
+        child: TopRatedMoviesWidget(),
+      ),
     );
   }
 }

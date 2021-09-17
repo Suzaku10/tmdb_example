@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb_example/network/repository/movies_repository.dart';
 import 'package:tmdb_example/router/router.gr.dart';
 
 void main() {
@@ -17,6 +16,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

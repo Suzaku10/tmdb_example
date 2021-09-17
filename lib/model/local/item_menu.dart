@@ -1,9 +1,8 @@
 import 'package:tmdb_example/utilities/function_utilities.dart';
 
 enum MenuBottom {
-  HOME,
-  HISTORY,
-  ACCOUNT,
+  MOVIES,
+  TV,
 }
 
 class ItemMenu {
