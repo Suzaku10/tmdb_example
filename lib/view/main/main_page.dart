@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tmdb_example/model/local/item_menu.dart';
 import 'package:tmdb_example/view/component/menu_bottom_widget.dart';
 import 'package:tmdb_example/view/movies/movies_page.dart';
+import 'package:tmdb_example/view/tv/tv_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _MainPageState extends State<MainPage> {
     super.initState();
     _navigatorPage = _navigatorPage = {
       MenuBottom.MOVIES: MoviesPage(),
-      MenuBottom.TV: Container(),
+      MenuBottom.TV: TvPage(),
     };
   }
 
