@@ -5,7 +5,7 @@ class ServiceUrl {
 
   static String get search => 'search';
 
-  static String get _movies => 'movies';
+  static String get _movies => 'movie';
 
   static String get _tv => 'tv';
 
