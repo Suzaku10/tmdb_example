@@ -1,16 +1,20 @@
-# tmdb_example
-
-A new Flutter project.
+# TMDB Example By Suzaku
 
 ## Getting Started
+- Using Flutter version 2.2.2 and Dart 2.13.3
+- Using MobX as Design Pattern
+- Using Dio as Http Request
+- Using AutoRoute as Navigator Management
 
-This project is a starting point for a Flutter application.
+## Run
+- Step 1 : Clone this repo
+- Step 2 : make sure you are in master branch
+- Step 3 : Connect your phone or use emulator
+- Step 4 : Via Terminal in Project Directory:
 
-A few resources to get you started if this is your first Flutter project:
+           ### Android
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+               flutter run -t lib/main.dart --debug
+                                or
+               flutter run -t lib/main.dart --release
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
