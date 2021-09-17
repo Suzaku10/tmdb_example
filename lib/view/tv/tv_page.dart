@@ -5,6 +5,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:tmdb_example/data/state.dart';
 import 'package:tmdb_example/store/tv_store/tv_store.dart';
 import 'package:tmdb_example/view/component/item_skeleton_movies.dart';
+import 'package:tmdb_example/view/component/search_widget.dart';
 import 'package:tmdb_example/view/tv/component/tv_segment_widget.dart';
 
 class TvPage extends StatefulWidget {
@@ -30,6 +31,7 @@ class _TvPageState extends State<TvPage> {
       appBar: AppBar(
         title: Text("TV Show"),
         centerTitle: true,
+        actions: [searchWidget(context)],
       ),
       body: Container(
         child: ListView.builder(

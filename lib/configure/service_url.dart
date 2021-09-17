@@ -26,4 +26,7 @@ class ServiceUrl {
   static String get onTheAirTv => "$_tv/on_the_air";
 
   static String get airingTodayTv => "$_tv/airing_today";
+
+  // Search
+  static String get searchByKeyword => "search/multi";
 }
