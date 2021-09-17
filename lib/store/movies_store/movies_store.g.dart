@@ -23,6 +23,20 @@ mixin _$MoviesStore on _MoviesStore, Store {
           Computed<NetworkState>(() => super.upcomingState,
               name: '_MoviesStore.upcomingState'))
       .value;
+  Computed<NetworkState>? _$popularStateComputed;
+
+  @override
+  NetworkState get popularState => (_$popularStateComputed ??=
+          Computed<NetworkState>(() => super.popularState,
+              name: '_MoviesStore.popularState'))
+      .value;
+  Computed<NetworkState>? _$nowPlayingStateComputed;
+
+  @override
+  NetworkState get nowPlayingState => (_$nowPlayingStateComputed ??=
+          Computed<NetworkState>(() => super.nowPlayingState,
+              name: '_MoviesStore.nowPlayingState'))
+      .value;
 
   final _$topRatedAtom = Atom(name: '_MoviesStore.topRated');
 
@@ -84,6 +98,66 @@ mixin _$MoviesStore on _MoviesStore, Store {
     });
   }
 
+  final _$popularAtom = Atom(name: '_MoviesStore.popular');
+
+  @override
+  MoviesResponse? get popular {
+    _$popularAtom.reportRead();
+    return super.popular;
+  }
+
+  @override
+  set popular(MoviesResponse? value) {
+    _$popularAtom.reportWrite(value, super.popular, () {
+      super.popular = value;
+    });
+  }
+
+  final _$_popularFutureAtom = Atom(name: '_MoviesStore._popularFuture');
+
+  @override
+  ObservableFuture<dynamic>? get _popularFuture {
+    _$_popularFutureAtom.reportRead();
+    return super._popularFuture;
+  }
+
+  @override
+  set _popularFuture(ObservableFuture<dynamic>? value) {
+    _$_popularFutureAtom.reportWrite(value, super._popularFuture, () {
+      super._popularFuture = value;
+    });
+  }
+
+  final _$nowPlayingAtom = Atom(name: '_MoviesStore.nowPlaying');
+
+  @override
+  MoviesResponse? get nowPlaying {
+    _$nowPlayingAtom.reportRead();
+    return super.nowPlaying;
+  }
+
+  @override
+  set nowPlaying(MoviesResponse? value) {
+    _$nowPlayingAtom.reportWrite(value, super.nowPlaying, () {
+      super.nowPlaying = value;
+    });
+  }
+
+  final _$_nowPlayingFutureAtom = Atom(name: '_MoviesStore._nowPlayingFuture');
+
+  @override
+  ObservableFuture<dynamic>? get _nowPlayingFuture {
+    _$_nowPlayingFutureAtom.reportRead();
+    return super._nowPlayingFuture;
+  }
+
+  @override
+  set _nowPlayingFuture(ObservableFuture<dynamic>? value) {
+    _$_nowPlayingFutureAtom.reportWrite(value, super._nowPlayingFuture, () {
+      super._nowPlayingFuture = value;
+    });
+  }
+
   final _$fetchMoviesDataAsyncAction =
       AsyncAction('_MoviesStore.fetchMoviesData');
 
@@ -108,13 +182,33 @@ mixin _$MoviesStore on _MoviesStore, Store {
     return _$_futureUpcomingAsyncAction.run(() => super._futureUpcoming());
   }
 
+  final _$_futureNowPlayingAsyncAction =
+      AsyncAction('_MoviesStore._futureNowPlaying');
+
+  @override
+  Future<void> _futureNowPlaying() {
+    return _$_futureNowPlayingAsyncAction.run(() => super._futureNowPlaying());
+  }
+
+  final _$_futurePopularAsyncAction =
+      AsyncAction('_MoviesStore._futurePopular');
+
+  @override
+  Future<void> _futurePopular() {
+    return _$_futurePopularAsyncAction.run(() => super._futurePopular());
+  }
+
   @override
   String toString() {
     return '''
 topRated: ${topRated},
 upcoming: ${upcoming},
+popular: ${popular},
+nowPlaying: ${nowPlaying},
 topRatedState: ${topRatedState},
-upcomingState: ${upcomingState}
+upcomingState: ${upcomingState},
+popularState: ${popularState},
+nowPlayingState: ${nowPlayingState}
     ''';
   }
 }
