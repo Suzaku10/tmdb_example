@@ -22,6 +22,18 @@ abstract class _MoviesStore with Store {
   @observable
   ObservableFuture? _upcomingFuture;
 
+  @observable
+  MoviesResponse? popular;
+
+  @observable
+  ObservableFuture? _popularFuture;
+
+  @observable
+  MoviesResponse? nowPlaying;
+
+  @observable
+  ObservableFuture? _nowPlayingFuture;
+
   @computed
   NetworkState get topRatedState {
     return _topRatedFuture?.status == FutureStatus.pending
@@ -36,10 +48,26 @@ abstract class _MoviesStore with Store {
         : NetworkState.loaded;
   }
 
+  @computed
+  NetworkState get popularState {
+    return _popularFuture?.status == FutureStatus.pending
+        ? NetworkState.loading
+        : NetworkState.loaded;
+  }
+
+  @computed
+  NetworkState get nowPlayingState {
+    return _nowPlayingFuture?.status == FutureStatus.pending
+        ? NetworkState.loading
+        : NetworkState.loaded;
+  }
+
   @action
   Future<void> fetchMoviesData() async {
     _futureTopRated();
     _futureUpcoming();
+    _futurePopular();
+    _futureNowPlaying();
   }
 
   @action
@@ -55,6 +83,22 @@ abstract class _MoviesStore with Store {
     try {
       _upcomingFuture = ObservableFuture(_repository.fetchUpcomingMovies());
       upcoming = await _upcomingFuture;
+    } catch (e) {}
+  }
+
+  @action
+  Future<void> _futureNowPlaying() async {
+    try {
+      _nowPlayingFuture = ObservableFuture(_repository.fetchNowPlayingMovies());
+      nowPlaying = await _nowPlayingFuture;
+    } catch (e) {}
+  }
+
+  @action
+  Future<void> _futurePopular() async {
+    try {
+      _popularFuture = ObservableFuture(_repository.fetchPopularMovies());
+      popular = await _popularFuture;
     } catch (e) {}
   }
 }

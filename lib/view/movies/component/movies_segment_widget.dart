@@ -28,13 +28,22 @@ class MoviesSegmentWidget extends StatelessWidget {
         Flexible(
           child: Container(
             height: 440,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => ItemMoviesWidget(
-                item: model?[index],
-              ),
-              itemCount: model?.length ?? 0,
-            ),
+            child: (model?.length ?? 0) == 0
+                ? Container(
+                    margin: EdgeInsets.all(16),
+                    color: Colors.grey,
+                    width: double.infinity,
+                    child: Center(
+                      child: Text("No Movies Found"),
+                    ),
+                  )
+                : ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => ItemMoviesWidget(
+                      item: model?[index],
+                    ),
+                    itemCount: model?.length ?? 0,
+                  ),
           ),
         )
       ],

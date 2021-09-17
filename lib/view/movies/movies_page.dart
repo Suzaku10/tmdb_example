@@ -32,7 +32,7 @@ class _MoviesPageState extends State<MoviesPage> {
       body: Container(
         child: ListView.builder(
           itemBuilder: (context, index) => _moviesSegment(index),
-          itemCount: 2,
+          itemCount: 4,
         ),
       ),
     );
@@ -61,6 +61,36 @@ class _MoviesPageState extends State<MoviesPage> {
           if (_store?.topRatedState == NetworkState.loaded) {
             return MoviesSegmentWidget(
                 title: "Upcoming", model: _store?.upcoming?.results);
+          } else {
+            return Container(
+              height: 200,
+              width: double.infinity,
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        });
+      case 2:
+        return Observer(builder: (_) {
+          if (_store?.popularState == NetworkState.loaded) {
+            return MoviesSegmentWidget(
+                title: "Popular", model: _store?.popular?.results);
+          } else {
+            return Container(
+              height: 200,
+              width: double.infinity,
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        });
+      case 3:
+        return Observer(builder: (_) {
+          if (_store?.nowPlayingState == NetworkState.loaded) {
+            return MoviesSegmentWidget(
+                title: "Now Playing", model: _store?.nowPlaying?.results);
           } else {
             return Container(
               height: 200,
