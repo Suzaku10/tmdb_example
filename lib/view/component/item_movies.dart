@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tmdb_example/model/constant.dart';
+import 'package:tmdb_example/data/constant.dart';
+import 'package:tmdb_example/model/remote/item_movies_model/item_movie_model.dart';
 import 'package:tmdb_example/utilities/function_utilities.dart';
 
 class ItemMoviesWidget extends StatelessWidget {
-  final String? title;
-  final String? url;
-  final String? releaseDateString;
-  final double? rate;
+  final ItemMovieModel? item;
 
-  const ItemMoviesWidget(
-      {Key? key, this.title, this.url, this.releaseDateString, this.rate})
-      : super(key: key);
+  const ItemMoviesWidget({Key? key, this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +29,9 @@ class ItemMoviesWidget extends StatelessWidget {
                       height: 300,
                       width: 200,
                       child: FadeInImage(
-                        image: NetworkImage(url ?? imagePlaceholderUrl),
+                        image: NetworkImage(item?.posterPath != null
+                            ? '$imageBaseUrl${item?.posterPath}'
+                            : imagePlaceholderUrl),
                         placeholder: AssetImage(
                           getSourceByNameImage('logo'),
                         ),
@@ -57,7 +55,7 @@ class ItemMoviesWidget extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text("$rate"),
+                          Text("${item?.voteAverage ?? 0}"),
                           Image.asset(
                             getSourceByNameImage('ic_star_fill'),
                             width: 12,
@@ -76,17 +74,17 @@ class ItemMoviesWidget extends StatelessWidget {
             child: Container(
               constraints: BoxConstraints(maxWidth: 200),
               child: Text(
-                '$title',
+                item?.title ?? "",
                 textAlign: TextAlign.center,
                 maxLines: 2,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
-              '$releaseDateString',
+              item?.releaseDate ?? "-",
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             ),
           )

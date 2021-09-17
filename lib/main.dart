@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tmdb_example/router/router.gr.dart';
+import 'package:tmdb_example/utilities/get_it_register.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  getItRegistry.doRegister();
   runApp(MyApp());
 }
 
@@ -18,7 +21,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
       routerDelegate: _appRouter.delegate(),
       routeInformationParser: _appRouter.defaultRouteParser(),

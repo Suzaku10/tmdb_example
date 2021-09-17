@@ -25,29 +25,31 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Container(
-              child: Stack(children: <Widget>[
-                _buildOffstageNavigator(MenuBottom.MOVIES),
-                _buildOffstageNavigator(MenuBottom.TV),
-              ]),
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Container(
+                child: Stack(children: <Widget>[
+                  _buildOffstageNavigator(MenuBottom.MOVIES),
+                  _buildOffstageNavigator(MenuBottom.TV),
+                ]),
+              ),
             ),
-          ),
-          MenuBottomWidget(
-            onTabMenu: (menu) {
-              setState(() {
-                if (_currentTab == menu) {
-                } else {
-                  _currentTab = menu;
-                }
-              });
-            },
-          )
-        ],
+            MenuBottomWidget(
+              onTabMenu: (menu) {
+                setState(() {
+                  if (_currentTab == menu) {
+                  } else {
+                    _currentTab = menu;
+                  }
+                });
+              },
+            )
+          ],
+        ),
       ),
     );
   }
