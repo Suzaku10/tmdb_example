@@ -1,10 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tmdb_example/data/state.dart';
+import 'package:tmdb_example/router/router.gr.dart';
 import 'package:tmdb_example/store/movies_store/movies_store.dart';
 import 'package:tmdb_example/view/component/item_skeleton_movies.dart';
+import 'package:tmdb_example/view/component/search_widget.dart';
 import 'package:tmdb_example/view/movies/component/movies_segment_widget.dart';
 
 class MoviesPage extends StatefulWidget {
@@ -30,6 +33,7 @@ class _MoviesPageState extends State<MoviesPage> {
       appBar: AppBar(
         title: Text("Movies"),
         centerTitle: true,
+        actions: [searchWidget(context)],
       ),
       body: Container(
         child: ListView.builder(
